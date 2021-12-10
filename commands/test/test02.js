@@ -11,7 +11,7 @@ module.exports = {
 
       let ignored = ["util", "database", "db"];
 
-      const emo = {
+      const catemo = {
         info: "❓",
 				fun: "🎮",
 				mod: "👁",
@@ -69,7 +69,7 @@ module.exports = {
 
       readdirSync("./commands/").forEach((dir) => {
         if (ignored.includes(dir.toLowerCase())) return;
-        const name = `${emo[dir.toLowerCase()]} ${dir.toUpperCase()} - ${catinfo[dir.toLowerCase()]}`;
+        const name = `${catemo[dir.toLowerCase()]} ${dir.toUpperCase()} - ${catinfo[dir.toLowerCase()]}`;
         let cats = new Object();
 
         cats = {
@@ -80,47 +80,6 @@ module.exports = {
 
         categories.push(cats);
       });
-      
-      let cots = [];
-      let catts = [];
-
-      readdirSync("./commands/").forEach((dir) => {
-        const commands = readdirSync(`./commands/${dir}/`).filter((file) =>
-          file.endsWith(".js")
-        );
-
-        const cmds = commands.map((command) => {
-          let file = require(`../../commands/${dir}/${command}`);
-
-          if (!file.name) return "No command name.";
-
-          let name = file.name.replace(".js", "");
-
-          let des = `${client.commands.get(name).description}`;
-          let emo = `✅`;
-
-          let obj = {
-            cname: `${emo} \`${name}\``,
-            des,
-          };
-
-          return obj;
-        });
-
-        let dota = new Object();
-
-        cmds.map((co) => {
-          dota = {
-            name: `${cmds.length === 0 ? "In progress" : co.cname}`,
-            value: co.des ? co.des : "No Description",
-            inline: true,
-          };
-          catts.push(dota);
-        });
-
-        cots.push(dir.toLowerCase());
-      })
-
         const help = new MessageEmbed()
           .setTitle(`\`\`Help Menu\`\``)
           .setDescription(`\`\`My Prefix is : ${config.prefix} \`\`\n \`\`\` Presented By Luminoux Studios \`\`\` \n To check out a category, use command ${config.prefix}help [category] \n\n [Invite Me Now](https://discord.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=bot%20applications.commands) \n [My Support Server](https://discord.gg/m5xUeZj7Xb) \n [My Other Server](https://discord.gg/aFCQSyzNU8)`)
@@ -147,42 +106,64 @@ module.exports = {
 
         const filter = button => {
           return button.user.id === message.author.id;
-        };
+        },
         const button = await msg.awaitMessageComponent({ filter: filter, componentType: 'BUTTON', max: 15 });
 
-        if(button.customId == hb.fun) {
+        const combed = new MessageEmbed()
+        .setTitle(
+          `__${
+            button.customId.toUpperCase() + button.customId.slice(1)
+          } Commands!__`
+        )
+        .setDescription(
+          `Use \`${config.prefix}help\` followed by a command name to get more information on a command.\nFor example: \`${config.prefix}help ping\`\n\n`
+        )
+        .addFields(catts)
+        .setColor(color);
+
+        let cots = [];
+        let catts = [];
+  
+        readdirSync("./commands/").forEach((dir) => {
+          const commands = readdirSync(`./commands/${dir}/`).filter((file) =>
+            file.endsWith(".js")
+          );
+          const cmds = commands.map((command) => {
+            let file = require(`../../commands/${dir}/${command}`);
+  
+            if (!file.name) return "No command name.";
+  
+            let name = file.name.replace(".js", "");
+  
+            let des = `${client.commands.get(name).description}`;
+            let emo = `✅`;
+  
+            let obj = {
+              cname: `${emo} \`${name}\``,
+              des,
+            };
+  
+            return obj;
+          });
+  
+          let dota = new Object();
+  
+          cmds.map((co) => {
+            dota = {
+              name: `${cmds.length === 0 ? "In progress" : co.cname}`,
+              value: co.des ? co.des : "No Description",
+              inline: true,
+            };
+            catts.push(dota);
+          });
+  
+          cots.push(dir.toLowerCase());
+        })
+        if(button.customId == button.customId) {
           msg.edit({
-              content: cmds.toLowerCase,
-              embeds: [helpCat],
+              content: combed,
+              embeds: [combed],
               components: hb,
-          })
-        };
-        if(button.customId == hb.games) {
-          msg.edit({
-            content: cmds.toLowerCase,
-            embeds: [helpCat],
-            components: hb,
-          })
-        };
-        if(button.customId == hb.info) {
-          msg.edit({
-            content: cmds.toLowerCase,
-            embeds: [helpCat],
-            components: hb,
-          })
-        };
-        if(button.customId == hb.mod) {
-          msg.edit({
-            content: cmds.toLowerCase,
-            embeds: [helpCat],
-            components: hb,
-          })
-        };
-        if(button.customId == hb.test) {
-          msg.edit({
-            content: cmds.toLowerCase,
-            embeds: [helpCat],
-            components: hb,
           })
         };
     }

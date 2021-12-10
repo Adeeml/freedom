@@ -39,7 +39,7 @@ const logger = winston.createLogger({
 
 const Errorhandler = require('discord-error-handler');
 const handle = new Errorhandler(client, {
-	webhook: { id: '905554048709705738', token: 'JHZIz7RQUed-uq16i0JEnLUZIdyipYTL1ut2NQRxpms8xY86gwOX_pR4MUXgkuAwi0Dh' },
+	webhook: { id: '918958773857574962', token: 'Y7Taz27FP2I6379_Xp3XaQWX7w8OF6KQCcjgZZ5x_rCjsYxSFe9HyptvM3e-yy6KeCFP' },
 });
 
 client.on('debug', m => logger.log('debug', m));
