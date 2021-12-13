@@ -104,6 +104,7 @@ module.exports = {
             components: hb,
         })
 
+      if(button.customId == button.customId) {
         const combed = new MessageEmbed()
         .setTitle(
           `__${
@@ -115,8 +116,7 @@ module.exports = {
         )
         .addFields(catts)
         .setColor(color);
-
-      if(button.customId == button.customId) {
+        
         let cots = [];
         let catts = [];
   
