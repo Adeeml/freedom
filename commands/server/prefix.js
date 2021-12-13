@@ -9,7 +9,7 @@ module.exports = {
     permissions: 'ADMINISTRATOR',
 run: async (client, message, args) => {
     const nPrefix = args[0];
-    if (!nPrefix) return message.reply('Give me args, or I cant send the prefix!')
+    if (!nPrefix) return message.reply('Give me args, or I cant set the prefix...')
 
     try {
         await prefixes.set(message.guild.id, args[0]);

@@ -1,7 +1,7 @@
 const globalPrefix = require('../../configs/config.json');
 const prefixes = require('../../configs/prefixes.json');
 const Keyv = require('keyv');
-const keyv = new Keyv();
+const keyv = new Keyv(`${process.env.MONGO_URL}`);
 
 client.on('messageCreate', async message => {
 	if (message.author.bot) return;
