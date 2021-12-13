@@ -102,7 +102,7 @@ module.exports = {
             embeds: [help],
             components: hb,
         })
-
+/*
       if(button.customId == button.customId) {
         readdirSync("./commands/").forEach((dir) => {
           const commands = readdirSync(`./commands/${dir}/`).filter((file) =>
@@ -159,6 +159,6 @@ module.exports = {
         } catch (error) {
           console.log(error),
           message.reply(error);
-        };
+        };*/
     }
 }
