@@ -65,12 +65,17 @@ client.categories = fs.readdirSync('./commands/');
 
 client.login(process.env.TOKEN);
 
+const msg = client.channels.cache.get("905544089917866035")
+
 process.on("unhandledRejection", (reason, p) => {
 	console.log(reason, p)
+	msg.channel.send(reason, p)
 })
 process.on("uncaughtException", (err, origin) => {
 	console.log(err, origin)
+	msg.channel.send(err, origin)
 })
 process.on("multipleResolves", (type, promise, reason) => {
 	console.log(type, promise, reason)
+	msg.channel.send(type, promise, reason)
 })

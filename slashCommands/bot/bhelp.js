@@ -4,8 +4,8 @@ const config = require('../../configs/config.json');
 const assets = require('../../configs/assets.json');
 
 module.exports = {
-    name: "test02",
-    description: "test02",
+    name: "help",
+    description: "help command",
     run: async (client, message, args) => {
       let categories = [];
 
@@ -95,7 +95,7 @@ module.exports = {
             client.user.displayAvatarURL({
               dynamic: true,
             })
-          )
+          );
         
         const msg = await message.channel.send({
             content: help,
@@ -152,7 +152,7 @@ module.exports = {
 
         } try {
           msg.edit({
-            content: cots,
+            content: catts,
             embeds: [combed],
             components: hb,
           })
