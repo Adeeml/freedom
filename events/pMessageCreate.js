@@ -1,6 +1,6 @@
 const globalPrefix = require('../../configs/config.json');
 const prefixes = require('../../configs/prefixes.json');
-const Keyv = require('keyv');
+const Keyv = require('@keyv/mongo');
 const keyv = new Keyv(`${process.env.MONGO_URL}`);
 
 client.on('messageCreate', async message => {
