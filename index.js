@@ -66,13 +66,13 @@ client.login(process.env.TOKEN);
 
 process.on("unhandledRejection", (reason, p) => {
 	console.log(reason, p),
-	handle.createrr(client, undefined, undefined, error);
+	handle.createrr(client, undefined, undefined, reason, p);
 })
 process.on("uncaughtException", (err, origin) => {
 	console.log(err, origin),
-	handle.createrr(client, undefined, undefined, error);
+	handle.createrr(client, undefined, undefined, err, origin);
 })
 process.on("multipleResolves", (type, promise, reason) => {
 	console.log(type, promise, reason),
-	handle.createrr(client, undefined, undefined, error);
+	handle.createrr(client, undefined, undefined, type, promise, reason);
 })
