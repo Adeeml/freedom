@@ -105,21 +105,6 @@ module.exports = {
         })
 
       if(button.customId == button.customId) {
-        const combed = new MessageEmbed()
-        .setTitle(
-          `__${
-            button.customId.toUpperCase() + button.customId.slice(1)
-          } Commands!__`
-        )
-        .setDescription(
-          `Use \`${config.prefix}help\` followed by a command name to get more information on a command.\nFor example: \`${config.prefix}help ping\`\n\n`
-        )
-        .addFields(catts)
-        .setColor(color);
-        
-        let cots = [];
-        let catts = [];
-  
         readdirSync("./commands/").forEach((dir) => {
           const commands = readdirSync(`./commands/${dir}/`).filter((file) =>
             file.endsWith(".js")
@@ -154,10 +139,22 @@ module.exports = {
           });
   
           cots.push(dir.toLowerCase());
-        })
+        })       
+        const combed = new MessageEmbed()
+        .setTitle(
+          `__${
+            button.customId.toUpperCase() + button.customId.slice(1)
+          } Commands!__`
+        )
+        .setDescription(
+          `Use \`${config.prefix}help\` followed by a command name to get more information on a command.\nFor example: \`${config.prefix}help ping\`\n\n`
+        )
+        .addFields(catts)
+        .setColor(color);
+
         } try {
           msg.edit({
-            content: combed,
+            content: cots,
             embeds: [combed],
             components: hb,
           })
