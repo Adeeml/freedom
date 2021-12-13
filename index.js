@@ -4,7 +4,7 @@ const fs = require('fs');
 const { globalPrefix } = require('./configs/config.json');
 const ee = require('./configs/embed.json');
 const winston = require('winston');
-const keyv = require('@keyv/mongo')
+const Keyv = require('@keyv/mongo')
 const prefixes = new Keyv(`${process.env.MONGO_URL}/test`);
 keyv.on('error', err => console.error('Keyv connection error:', err));
 
