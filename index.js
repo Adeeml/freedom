@@ -46,8 +46,7 @@ client.on('debug', m => logger.log('debug', m));
 client.on('warn', m => logger.log('warn', m));
 client.on('error', m => logger.log('error', m));
 process.on('uncaughtException', error => {
-	logger.log('error', error),
-	handle.createrr(client, undefined, undefined, error);
+	logger.log('error', error);
 });
 
 logger.exitOnError = false;
@@ -67,13 +66,13 @@ client.login(process.env.TOKEN);
 
 process.on("unhandledRejection", (reason, p) => {
 	console.log(reason, p)
-	client.channels.cache.get("905544089917866035").send(reason, p)
+	handle.createrr(client, undefined, undefined, error);
 })
 process.on("uncaughtException", (err, origin) => {
 	console.log(err, origin)
-	client.channels.cache.get("905544089917866035").send(err, origin)
+	handle.createrr(client, undefined, undefined, error);
 })
 process.on("multipleResolves", (type, promise, reason) => {
 	console.log(type, promise, reason)
-	client.channels.cache.get("905544089917866035").send(type, promise, reason)
+	handle.createrr(client, undefined, undefined, error);
 })
