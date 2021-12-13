@@ -116,6 +116,7 @@ module.exports = {
         .addFields(catts)
         .setColor(color);
 
+      if(button.customId == button.customId) {
         let cots = [];
         let catts = [];
   
@@ -154,17 +155,15 @@ module.exports = {
   
           cots.push(dir.toLowerCase());
         })
-        const filter = button => {
-          return button.user.id === message.author.id;
-        }
-        const button = await msg.awaitMessageComponent({ filter: filter, componentType: 'BUTTON', max: 15 });
-
-        if(button.customId == button.customId) {
+        } try {
           msg.edit({
-              content: combed,
-              embeds: [combed],
-              components: hb,
+            content: combed,
+            embeds: [combed],
+            components: hb,
           })
+        } catch (error) {
+          console.log(error),
+          message.reply(error);
         };
     }
 }
