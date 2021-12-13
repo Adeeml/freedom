@@ -1,7 +1,7 @@
 const { MessageEmbed, Message, Client } = require("discord.js");
 const { readdirSync } = require("fs");
-let color = "#36393f";
 const config = require('../../configs/config.json');
+const assets = require('../../configs/assets.json');
 
 module.exports = {
     name: "test02",
@@ -96,7 +96,6 @@ module.exports = {
               dynamic: true,
             })
           )
-          .setColor(color);
         
         const msg = await message.channel.send({
             content: help,
@@ -150,7 +149,6 @@ module.exports = {
           `Use \`${config.prefix}help\` followed by a command name to get more information on a command.\nFor example: \`${config.prefix}help ping\`\n\n`
         )
         .addFields(catts)
-        .setColor(color);
 
         } try {
           msg.edit({

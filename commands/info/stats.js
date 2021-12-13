@@ -18,7 +18,7 @@ module.exports = {
 	  	  Owner      :: VenomousSteam81
 	  	  Host       :: Railway + Github
 	  	  Prefix     :: ${config.prefix}
-				`;
+	   `;
 		const clientStats = stripIndent`
           Servers    :: ${message.client.guilds.cache.size}
           Users      :: ${message.client.users.cache.size}
@@ -33,11 +33,11 @@ module.exports = {
           CPU Usage  :: ${await cpu.usage()} %
           RAM        :: ${totalMemMb} MB
           RAM Usage  :: ${ramUsage} MB
-        `;
+       `;
 		const extraStats = stripIndent`
 		  Tokens     :: 6 token resets
 		  Type       :: Stable
-	`;
+	   `;
 
 		const embed = new MessageEmbed()
 			.setTitle('Bot\'s Statistics')
