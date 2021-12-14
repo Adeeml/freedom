@@ -1,5 +1,5 @@
 const globalPrefix = require('../../configs/config.json');
-const prefixes = require('../../configs/prefixes.json');
+const prefixes = require(`${process.env.MONGO_URL}/test`);
 const Keyv = require('@keyv/mongo');
 
 module.exports = {
