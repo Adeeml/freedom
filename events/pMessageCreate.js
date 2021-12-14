@@ -1,7 +1,7 @@
 const client = require('..');
 const globalPrefix = require('../configs/config.json');
 const Keyv = require('keyv');
-const prefixes = new Keyv(`mongodb://mongo:Iaxz0ZToJP3zacJwOLHr@containers-us-west-23.railway.app:7149/prefixes`);
+const prefixes = new Keyv(`${process.env.MONGO_URL}`);
 
 client.on('messageCreate', async message => {
 	if (message.author.bot) return;
