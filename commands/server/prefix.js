@@ -1,6 +1,6 @@
 const { globalPrefix } = require('../../configs/config.json');
 const Keyv = require('keyv');
-const prefixes = new Keyv(`${process.env.MONGO_URL}`, { namespace: 'prefixes'});
+const prefixes = new Keyv(`${process.env.MONGO_URL}`, { collection: 'prefixes' });
 
 module.exports = {
     name: 'prefix',
