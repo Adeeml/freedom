@@ -1,7 +1,7 @@
 const globalPrefix = require('../../configs/config.json');
 const prefixes = require('../../configs/prefixes.json');
 const Keyv = require('@keyv/mongo');
-const keyv = new Keyv(`${process.env.MONGO_URL}/test`);
+const prefixes = new Keyv(`${process.env.MONGO_URL}/test`);
 
 module.exports = {
     name: 'prefix',
@@ -9,7 +9,7 @@ module.exports = {
     permissions: 'ADMINISTRATOR',
 run: async (client, message, args) => {
     const nPrefix = args[0];
-    if (!nPrefix) return message.reply('Give me args, or I cant set the prefix...')
+    if (!nPrefix) return message.reply('Insert a prefix, or I cant set the prefix...')
 
     try {
         await prefixes.set(message.guild.id, args[0]);
