@@ -1,4 +1,4 @@
-const { globalPrefix } = require('/workspace/configs/config.json');
+const globalPrefix = require('../../configs/config.json');
 const Keyv = require('keyv');
 const prefixes = new Keyv(`${process.env.MONGO_URL}/prefixes`);
 
