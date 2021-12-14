@@ -36,7 +36,8 @@
     "simply-djs": "^2.1.2",
     "twemoji-parser": "^13.1.0",
     "winston": "^3.3.3",
-    "@keyv/mongo": "latest"
+    "@keyv/mongo": "latest",
+    "keyv": "latest"
   },
   "devDependencies": {
     "node": "^16.10.0"
