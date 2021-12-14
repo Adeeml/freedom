@@ -6,8 +6,8 @@ const winston = require('winston');
 const keyv = require('@keyv/mongo');
 const globalPrefix = require('./configs/config.json');
 const prefixes = new Keyv(`${process.env.MONGO_URL}/test`);
-keyv.on('error', err => console.error('Keyv connection error:', err));
-prefixes.on('error', err => console.error('Keyv prefix error', err));
+//keyv.on('error', err => console.error('Keyv connection error:', err));
+prefixes.on('error', err => console.error('Keyv connection error', err));
 
 const client = new Client({
 	messageCacheLifetime: 60,
