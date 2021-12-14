@@ -13,7 +13,7 @@ module.exports = (client) => {
               client.events.set(pull.name, pull);
             }
           }
-          console.log((`${file}  Events Loaded Successfullly`));
+          console.log((`${file} Events Loaded Successfullly`));
         });
   } catch (e) {
       console.log(e.message);
