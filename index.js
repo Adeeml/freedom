@@ -5,7 +5,7 @@ const ee = require('./configs/embed.json');
 const winston = require('winston');
 const Keyv = require('keyv');
 const globalPrefix = require('/workspace/configs/config.json');
-const prefixes = new Keyv(`${process.env.MONGO_URL}/prefixes`);
+const prefixes = new Keyv(`mongodb://mongo:Iaxz0ZToJP3zacJwOLHr@containers-us-west-23.railway.app:7149/prefixes`);
 //keyv.on('error', err => console.error('Keyv connection error:', err));
 prefixes.on('error', err => console.error('Keyv connection error', err));
 
