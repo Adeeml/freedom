@@ -21,18 +21,13 @@ const activities = [
 	"undefined",
 	"for mentions",
 	"javascript",
-	"the air",
-	"venom change my name"
+	"the air"
 ];
 
 client.on("ready", () => {
-	try{
-	  setInterval(() => {
-	    const randomIndex = Math.floor(Math.random() * (activities.length - 1) + 1);
+	setInterval(() => {
+		const randomIndex = Math.floor(Math.random() * (activities.length - 1) + 1);
     	const newActivity = activities[randomIndex];
   }, 5000);
-	} catch(error) {
-		console.log('status Event:', error);
-	}
 	client.user.setActivity(newActivity, { type: 'WATCHING'});
 });
