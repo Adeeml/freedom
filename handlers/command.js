@@ -13,7 +13,7 @@ module.exports = (client) => {
                     client.commands.set(pull.name, pull);
                     command++
                 } else {
-                    console.log(`${cmds} Command is not ready; prefix command`);
+                    console.log(`${cmds} Command is not ready; pCommand`);
                     continue;
                 }
                 if (pull.aliases && Array.isArray(pull.aliases)) pull.aliases.forEach(alias => client.aliases.set(alias, pull.name));
@@ -22,6 +22,7 @@ module.exports = (client) => {
         })
         console.log(`${command}s were loaded!`);
     } catch (e) {
-        console.log(e.message);
+        console.log(e);
+        continue;
     }
 }

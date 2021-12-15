@@ -16,6 +16,7 @@ module.exports = (client) => {
           console.log((`${file} Events Loaded Successfullly`));
         });
   } catch (e) {
-      console.log(e.message);
+      console.log(e);
+      continue;
   }
 }

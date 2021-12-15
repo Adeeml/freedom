@@ -14,7 +14,7 @@ module.exports = (client) => {
                     arrayOfSlashCommands.push(pull)
                     command++
                 } else {
-                    console.log(`${cmds} Command is not ready; slash command`);
+                    console.log(`${cmds} Command is not ready; sCommand`);
                     continue;
                 }
                 if (pull.aliases && Array.isArray(pull.aliases)) pull.aliases.forEach(alias => client.aliases.set(alias, pull.name));
@@ -31,6 +31,7 @@ module.exports = (client) => {
         })
         console.log(`${command} Command is ready; slash`);
     } catch (e) {
-        console.log(e.message);
+        console.log(e);
+        continue;
     }
-				}
+}
