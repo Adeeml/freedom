@@ -1,15 +1,16 @@
 const { MessageEmbed, Collection } = require('..');
-const { globalPrefix } = require('../configs/config.json');
+const config = require('../configs/config.json');
+const globalPrefix = config.globalPrefix
 const Keyv = require('keyv');
 const prefixes = new Keyv(`${process.env.MONGO_URL}`);
 const client = require("..");
 
 client.on('messageCreate', async (message) => {
 	// Ignore WebManagebot, DMs, partial messages in channels and themselves
-	//if (message.author.bot) return;
-	//if (!message.guild) return message.reply('Please send commands in a server');
-	//if (message.channel.partial) await message.channel.fetch();
-	//if (message.partial) await message.fetch();
+	if (message.author.bot) return;
+	if (!message.guild) return message.reply('Please send commands in a server');
+	if (message.channel.partial) await message.channel.fetch();
+	if (message.partial) await message.fetch();
 
 	let args;
 	// handle messages in a guild
