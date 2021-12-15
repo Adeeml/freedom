@@ -17,6 +17,5 @@ module.exports = (client) => {
         });
   } catch (e) {
       console.log(e);
-      continue;
   }
 }

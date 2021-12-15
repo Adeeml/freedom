@@ -32,6 +32,5 @@ module.exports = (client) => {
         console.log(`${command} Command is ready; slash`);
     } catch (e) {
         console.log(e);
-        continue;
     }
 }

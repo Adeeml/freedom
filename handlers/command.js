@@ -21,8 +21,7 @@ module.exports = (client) => {
             }
         })
         console.log(`${command}s were loaded!`);
-    } catch (e) {
-        console.log(e);
-        continue;
+    } catch (error) {
+        console.log(error);
     }
 }
