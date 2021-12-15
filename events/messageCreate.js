@@ -1,10 +1,10 @@
 const { MessageEmbed, Collection } = require('..');
-const config = require('../configs/config.json');
-const globalPrefix = config.globalPrefix
 const Keyv = require('keyv');
 const prefixes = new Keyv(`${process.env.MONGO_URL}`);
 const client = require("..");
-var ee = require("../configs/embed.json");
+//var ee = require("../configs/embed.json");
+const config = require('../configs/config.json');
+const globalPrefix = config.globalPrefix;
 
 client.on('messageCreate', async (message) => {
 	// Ignore WebManagebot, DMs, partial messages in channels and themselves

@@ -1,7 +1,7 @@
 const Keyv = require('keyv');
 const { Client, Intents } = require('discord.js');
 const config = require('./configs/config.json');
-const globalPrefix = config.globalPrefix
+const globalPrefix = config.globalPrefix;
 
 const client = new Client({
     intents: [
