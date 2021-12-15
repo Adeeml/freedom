@@ -2,6 +2,9 @@ const { MessageEmbed, Message, Client } = require("discord.js");
 const { readdirSync } = require("fs");
 let color = "#36393f";
 const config = require('../../configs/config.json');
+const prefix = config.globalPrefix;
+const Keyv = require('keyv');
+const prefixes = new Keyv(`${process.env.MONGO_URL}`);
 
 module.exports = {
   name: "help",
@@ -28,7 +31,7 @@ module.exports = {
 				mod: "Punish those baddies from existence",
         server: "Manage this server",
 				games: "Gaymerland",
-				test: "Testing or \"beta\" commands"
+				test: "Testing commands"
       };
 
       readdirSync("./commands/").forEach((dir) => {
@@ -38,16 +41,16 @@ module.exports = {
 
         cats = {
           name: name,
-          value: `\`${config.prefix}help ${dir.toLowerCase()}\``,
+          value: `\`${gPrefix}help ${dir.toLowerCase()}\``,
           inline: false,
         };
 
         categories.push(cats);
       });
-
+      const gPrefix = await prefixes.get(message.guild.id);
       const embed = new MessageEmbed()
         .setTitle(`\`\`Help Menu\`\``)
-        .setDescription(`\`\`My Prefix is : ${config.prefix} \`\`\n \`\`\` Presented By VenomousSteam81 \`\`\`\n \`\` I WAS KICKED FROM LUMINOX STUDIOS \`\` \n To check out a category, use command ${config.prefix}help [category] \n\n [Invite Me Now](https://discord.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=bot%20applications.commands) \n [My Support Server](https://discord.gg/aFCQSyzNU8)`)
+        .setDescription(`\`\`My Prefix is : ${gPrefix} \`\`\n To check out a category, use command ${gPrefix}help [category] \n\n [Invite Me Now](https://discord.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=bot%20applications.commands) \n [My Support Server](https://discord.gg/aFCQSyzNU8)`)
         .addFields(categories)
         .setFooter(
           `Requested by ${message.author.tag}`,
@@ -120,7 +123,7 @@ module.exports = {
             } Commands!__`
           )
           .setDescription(
-            `Use \`${config.prefix}help\` followed by a command name to get more information on a command.\nFor example: \`${config.prefix}help ping\`\n\n`
+            `Use \`${gPrefix}help\` followed by a command name to get more information on a command.\nFor example: \`${gPrefix}help ping\`\n\n`
           )
           .addFields(catts)
           .setColor(color);
@@ -131,7 +134,7 @@ module.exports = {
       if (!command) {
         const embed = new MessageEmbed()
           .setTitle(
-            `Invalid command! Use \`${config.prefix}help\` for all of my commands!`
+            `Invalid command! Use \`${gPrefix}help\` for all of my commands!`
           )
           .setColor("RED");
         return message.channel.send({ embeds: [embed] });
@@ -152,8 +155,8 @@ module.exports = {
         .addField(
           "Usage:",
           command.usage
-            ? `\`${config.prefix}${command.name} ${command.usage}\``
-            : `\`${config.prefix}${command.name}\``
+            ? `\`${gPrefix}${command.name} ${command.usage}\``
+            : `\`${gPrefix}${command.name}\``
         )
         .addField(
           "Command Description:",
