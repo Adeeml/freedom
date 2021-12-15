@@ -5,13 +5,13 @@ const config = require('../../configs/config.json');
 const prefix = config.globalPrefix;
 const Keyv = require('keyv');
 const prefixes = new Keyv(`${process.env.MONGO_URL}`);
-const gPrefix = await prefixes.get(message.guild.id);
 
 module.exports = {
   name: "help",
   aliases: "h",
   description: "Shows all available commands",
   run: async (client, message, args) => {
+    const gPrefix = await prefixes.get(message.guild.id);
     if (!args[0]) {
       let categories = [];
 
