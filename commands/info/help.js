@@ -5,6 +5,7 @@ const config = require('../../configs/config.json');
 const prefix = config.globalPrefix;
 const Keyv = require('keyv');
 const prefixes = new Keyv(`${process.env.MONGO_URL}`);
+const gPrefix = await prefixes.get(message.guild.id);
 
 module.exports = {
   name: "help",
@@ -47,7 +48,6 @@ module.exports = {
 
         categories.push(cats);
       });
-      const gPrefix = await prefixes.get(message.guild.id);
       const embed = new MessageEmbed()
         .setTitle(`\`\`Help Menu\`\``)
         .setDescription(`\`\`My Prefix is : ${gPrefix} \`\`\n To check out a category, use command ${gPrefix}help [category] \n\n [Invite Me Now](https://discord.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=bot%20applications.commands) \n [My Support Server](https://discord.gg/aFCQSyzNU8)`)
