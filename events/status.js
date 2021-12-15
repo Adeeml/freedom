@@ -21,13 +21,15 @@ const activities = [
 	"undefined",
 	"for mentions",
 	"javascript",
-	"the air"
+	"the air",
+	"all the errors"
 ];
 
 client.on("ready", () => {
-	setInterval(() => {
-		const randomIndex = Math.floor(Math.random() * (activities.length - 1) + 1);
-    	const newActivity = activities[randomIndex];
+  setInterval(() => {
+    const randomIndex = Math.floor(Math.random() * (activities.length - 1) + 1);
+    const newActivity = activities[randomIndex];
+
+    client.user.setActivity(newActivity, { type: 'WATCHING'});
   }, 5000);
-	client.user.setActivity(newActivity, { type: 'WATCHING'});
 });
