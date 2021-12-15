@@ -1,10 +1,15 @@
-const client = require('..');
+const { MessageEmbed, Collection } = require('..');
 const { globalPrefix } = require('../configs/config.json');
 const Keyv = require('keyv');
 const prefixes = new Keyv(`${process.env.MONGO_URL}`, { collection: 'prefixes' });
+const client = require("..");
 
-client.on('messageCreate', async message => {
+client.on('messageCreate', async (message) => {
+	// Ignore WebManagebot, DMs, partial messages in channels and themselves
 	if (message.author.bot) return;
+	if (!message.guild) return;
+	if (message.channel.partial) await message.channel.fetch();
+	if (message.partial) await message.fetch();
 
 	let args;
 	// handle messages in a guild
@@ -26,8 +31,11 @@ client.on('messageCreate', async message => {
 		// handle DMs
 		const slice = message.content.startsWith(globalPrefix) ? globalPrefix.length : 0;
 		args = message.content.slice(slice).split(/\s+/);
+	} catch(error) {
+		console.log('messageCreate Event:', error);
 	}
 
 	// get the first space-delimited argument after the prefix as the command
-	const command = args.shift().toLowerCase();
+	const cmd = args.shift().toLowerCase();
+	const command = client.commands.get(cmd.toLowerCase());
 });
