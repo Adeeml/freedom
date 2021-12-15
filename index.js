@@ -43,7 +43,7 @@ const logger = winston.createLogger({
 
 const Errorhandler = require('discord-error-handler');
 const handle = new Errorhandler(client, {
-	webhook: { id: '918958773857574962', token: 'Y7Taz27FP2I6379_Xp3XaQWX7w8OF6KQCcjgZZ5x_rCjsYxSFe9HyptvM3e-yy6KeCFP' },
+	webhook: { id: process.env.WEBHOOK_ID, token: process.env.WEBHOOK_TOKEN },
 });
 
 client.on('debug', m => logger.log('debug', m));
@@ -70,13 +70,13 @@ client.login(process.env.TOKEN);
 
 process.on("unhandledRejection", (reason, p) => {
 	console.log(reason, p)
-	//handle.createrr(client, undefined, undefined, reason, p)
+	handle.createrr(client, undefined, undefined, reason, p)
 })
 process.on("uncaughtException", (err, origin) => {
 	console.log(err, origin)
-	//handle.createrr(client, undefined, undefined, err, origin)
+	handle.createrr(client, undefined, undefined, err, origin)
 })
 process.on("multipleResolves", (type, promise, reason) => {
 	console.log(type, promise, reason)
-	//handle.createrr(client, undefined, undefined, type, promise, reason)
+	handle.createrr(client, undefined, undefined, type, promise, reason)
 })
