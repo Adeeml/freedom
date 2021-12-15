@@ -1,7 +1,7 @@
 const { MessageEmbed, Collection } = require('..');
 const { globalPrefix } = require('../configs/config.json');
 const Keyv = require('keyv');
-const prefixes = new Keyv(`${process.env.MONGO_URL}`, { collection: 'prefixes' });
+const prefixes = new Keyv(`${process.env.MONGO_URL}`);
 const client = require("..");
 
 client.on('messageCreate', async (message) => {

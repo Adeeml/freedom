@@ -5,7 +5,7 @@ const ee = require('./configs/embed.json');
 const winston = require('winston');
 const Keyv = require('keyv');
 const { globalPrefix } = require('/workspace/configs/config.json');
-const prefixes = new Keyv(`${process.env.MONGO_URL}`, { collection: 'prefixes' });
+const prefixes = new Keyv(`${process.env.MONGO_URL}`);
 //keyv.on('error', err => console.error('Keyv connection error:', err));
 prefixes.on('error', err => console.error('Keyv connection error', err));
 
