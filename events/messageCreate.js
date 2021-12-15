@@ -7,7 +7,7 @@ const client = require("..");
 client.on('messageCreate', async (message) => {
 	// Ignore WebManagebot, DMs, partial messages in channels and themselves
 	if (message.author.bot) return;
-	if (!message.guild) return;
+	if (!message.guild) return message.reply('Please send commands in a server');
 	if (message.channel.partial) await message.channel.fetch();
 	if (message.partial) await message.fetch();
 
@@ -31,8 +31,6 @@ client.on('messageCreate', async (message) => {
 		// handle DMs
 		const slice = message.content.startsWith(globalPrefix) ? globalPrefix.length : 0;
 		args = message.content.slice(slice).split(/\s+/);
-	} catch(error) {
-		console.log('messageCreate Event:', error);
 	}
 
 	// get the first space-delimited argument after the prefix as the command
