@@ -12,7 +12,7 @@ client.on('messageCreate', async (message) => {
 	if (!message.guild) return message.reply('Please send commands in a server');
 	if (message.channel.partial) await message.channel.fetch();
 	if (message.partial) await message.fetch();
-	
+
 	let args;
 	// handle messages in a guild
 	if (message.guild) {
@@ -34,5 +34,5 @@ client.on('messageCreate', async (message) => {
 
 		const cmd = args.shift().toLowerCase();
 		const command = client.commands.get(cmd.toLowerCase());
-	await command.run(client, message, args, prefix)
+	await command.run(client, message, args, globalPrefix)
 });
