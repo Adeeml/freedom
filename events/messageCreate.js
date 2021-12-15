@@ -8,11 +8,12 @@ const globalPrefix = config.globalPrefix;
 
 client.on('messageCreate', async (message) => {
 	// Ignore WebManagebot, DMs, partial messages in channels and themselves
+	/*
 	if (message.author.bot) return;
 	if (!message.guild) return message.reply('Please send commands in a server');
 	if (message.channel.partial) await message.channel.fetch();
 	if (message.partial) await message.fetch();
-
+*/
 	let args;
 	// handle messages in a guild
 	if (message.guild) {
