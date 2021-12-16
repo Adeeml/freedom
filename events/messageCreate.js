@@ -16,19 +16,6 @@ client.on('messageCreate', async (message) => {
 	const prefixRegex = new RegExp(
 		`^(<@!?${client.user.id}>|${escapeRegex(prefix)})\\s*`
 	  );
-	  if (!prefixRegex.test(message.content)) return;
-	  const [, matchedPrefix] = message.content.match(prefixRegex);
-	  const args = message.content.slice(matchedPrefix.length).trim().split(/ +/);
-	  const cmd = args.shift().toLowerCase();
-	  // getting mention prefix
-	  if (cmd.length === 0) {
-		if (matchedPrefix.includes(client.user.id)) {
-		  message.reply(
-			`To see all commands type: ${gPrefix}help`
-		  );
-		}
-	  }
-
 	const command = client.commands.get(cmd.toLowerCase());
 	let args;
 	// handle messages in a guild
