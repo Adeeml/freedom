@@ -14,8 +14,6 @@ client.on('messageCreate', async (message) => {
 	if (message.partial) await message.fetch();
 
 	let args;
-	const cmd = args.toLowerCase();
-	const command = client.commands.get(cmd.toLowerCase());
 	// handle messages in a guild
 	if (message.guild) {
 		let prefix;
@@ -36,6 +34,8 @@ client.on('messageCreate', async (message) => {
 
 	if (!command) return;
 	if (command) {
+		const cmd = args.shift().toLowerCase();
+		const command = client.commands.get(cmd.toLowerCase());
 	  if (!message.member.permissions.has(command.permissions || []))
 		return message.channel.send('You do not have the perms to complete such actions...');
   
