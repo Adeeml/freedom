@@ -7,6 +7,8 @@ const config = require('../configs/config.json');
 const globalPrefix = config.globalPrefix;
 
 client.on('messageCreate', async (message) => {
+	const cmd = args.shift().toLowerCase();
+	
 	// Ignore WebManagebot, DMs, partial messages in channels and themselves
 	if (message.author.bot) return;
 	if (!message.guild) return message.reply('Please send commands in a server');
@@ -14,7 +16,6 @@ client.on('messageCreate', async (message) => {
 	if (message.partial) await message.fetch();
 
 	const command = client.commands.get(cmd.toLowerCase());
-	const cmd = args.shift().toLowerCase();
 	let args;
 	// handle messages in a guild
 	if (message.guild) {
