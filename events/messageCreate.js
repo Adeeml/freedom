@@ -31,20 +31,19 @@ client.on('messageCreate', async (message) => {
 		const slice = message.content.startsWith(globalPrefix) ? globalPrefix.length : 0;
 		args = message.content.slice(slice).split(/\s+/);
 	}
-
 	if (!command) return;
 	if (command) {
-		const cmd = args.shift().toLowerCase();
-		const command = client.commands.get(cmd.toLowerCase());
 	  if (!message.member.permissions.has(command.permissions || []))
 		return message.channel.send('You do not have the perms to complete such actions...');
   
 	  //Check if user is on cooldown with the cmd, with Tomato#6966's Function from /handlers/functions.js
 	  if (onCoolDown(message, command)) {
 		let cool = new MessageEmbed()
-		.setDescription(`❌ Please wait ${onCoolDown(message, command)} more second(s) before reusing the ${command.name} command.`)
+		  .setDescription(`❌ Please wait ${onCoolDown(message, command)} more second(s) before reusing the ${command.name} command.`)
 		return message.channel.send({embeds : [cool]})
 	  }
+	  const cmd = args.shift().toLowerCase();
+	  const command = client.commands.get(cmd.toLowerCase());
 	  await command.run(client, message, args, prefix);
 	};
 });
