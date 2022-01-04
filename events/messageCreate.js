@@ -7,15 +7,12 @@ const config = require('../configs/config.json');
 const globalPrefix = config.globalPrefix;
 
 client.on('messageCreate', async (message) => {
-	const { escapeRegex, onCoolDown } = require("../utils/function.js");
 	// Ignore WebManagebot, DMs, partial messages in channels and themselves
 	if (message.author.bot) return;
 	if (!message.guild) return message.reply('Please send commands in a server');
 	if (message.channel.partial) await message.channel.fetch();
 	if (message.partial) await message.fetch();
-	const prefixRegex = new RegExp(
-		`^(<@!?${client.user.id}>|${escapeRegex(prefix)})\\s*`
-	  );
+	
 	const command = client.commands.get(cmd.toLowerCase());
 	let args;
 	// handle messages in a guild
