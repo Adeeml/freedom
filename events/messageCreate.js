@@ -14,7 +14,7 @@ client.on('messageCreate', async (message) => {
 	if (message.partial) await message.fetch();
 
 	let args;
-	const cmd = args.shift().toLowerCase();
+	const cmd = args().toLowerCase();
 	const command = client.commands.get(cmd.toLowerCase());
 	// handle messages in a guild
 	if (message.guild) {
