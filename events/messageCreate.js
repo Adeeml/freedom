@@ -14,6 +14,8 @@ client.on('messageCreate', async (message) => {
 	if (message.partial) await message.fetch();
 
 	let args;
+	const cmd = args.shift().toLowerCase();
+	const command = client.commands.get(cmd.toLowerCase());
 	// handle messages in a guild
 	if (message.guild) {
 		let prefix;
@@ -42,8 +44,6 @@ client.on('messageCreate', async (message) => {
 		  .setDescription(`❌ Please wait ${onCoolDown(message, command)} more second(s) before reusing the ${command.name} command.`)
 		return message.channel.send({embeds : [cool]})
 	  }
-	  const cmd = args.shift().toLowerCase();
-	  const command = client.commands.get(cmd.toLowerCase());
 	  await command.run(client, message, args, prefix);
 	};
 });
