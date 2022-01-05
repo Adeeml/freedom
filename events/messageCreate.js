@@ -39,5 +39,5 @@ client.on('messageCreate', async (message) => {
 // Get the first space-delimited argument after the prefix as the command
 	const command = args.shift().toLowerCase();
 // Send the command
-  await command.run(client, message, args, prefix);
+  await command.run(client, message, args);
 });
