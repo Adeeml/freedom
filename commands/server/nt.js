@@ -14,6 +14,6 @@ module.exports = {
           //.addField('Original', )
           .addField('New |', `${nNick}`)
     
-      message.reply({ content: 'nick', embed: [nick] });
+      message.reply({ embed: [nick] });
     }
 }
