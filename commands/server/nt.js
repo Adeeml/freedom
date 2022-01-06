@@ -11,12 +11,9 @@ module.exports = {
 
         const nick = new MessageEmbed()
           .setTitle('Nickname changed!')
-          .addField('Original', )
-          .addField('New |', `${nick}`)
+          //.addField('Original', )
+          .addField('New |', `${nNick}`)
     
-      message.reply({
-        content: 'Nick',
-        embed: [nNick]
-    });
+      message.reply({ embed: [nNick] });
     }
 }
