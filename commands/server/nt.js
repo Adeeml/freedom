@@ -7,7 +7,7 @@ module.exports = {
     const user = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
     let nNick = args.slice(2).join(" ");
     if (!user) return message.reply('Please mention a user to change');
-    if (!nick) nNick = "No-Name"
+    if (!nNick) nNick = "No-Name"
 
         const nick = new MessageEmbed()
           .setTitle('Nickname changed!')

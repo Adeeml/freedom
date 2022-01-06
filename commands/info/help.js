@@ -11,7 +11,7 @@ module.exports = {
   aliases: "h",
   description: "Shows all available commands",
   run: async (client, message, args) => {
-    const gPrefix = await prefixes.get(message.guild.id);
+    //const gPrefix = await prefixes.get(message.guild.id);
     if (!args[0]) {
       let categories = [];
 
@@ -30,7 +30,7 @@ module.exports = {
         info: "Info Land",
 				fun: "Fun Land",
 				mod: "Punish those baddies from existence",
-        server: "Manage this server",
+        server: "Manage the server",
 				games: "Gaymerland",
 				test: "Testing commands"
       };
@@ -42,7 +42,7 @@ module.exports = {
 
         cats = {
           name: name,
-          value: `\`${gPrefix}help ${dir.toLowerCase()}\``,
+          value: `\`${prefix}help ${dir.toLowerCase()}\``,
           inline: false,
         };
 
@@ -50,7 +50,7 @@ module.exports = {
       });
       const embed = new MessageEmbed()
         .setTitle(`\`\`Help Menu\`\``)
-        .setDescription(`\`\`My Prefix is : ${gPrefix} \`\`\n To check out a category, use command ${gPrefix}help [category] \n\n [Invite Me Now](https://discord.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=bot%20applications.commands) \n [My Support Server](https://discord.gg/aFCQSyzNU8)`)
+        .setDescription(`\`\`My Prefix is : ${prefix} \`\`\n To check out a category, use command ${prefix}help [category] \n\n [Invite Me Now](https://discord.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=bot%20applications.commands) \n [My Support Server](https://discord.gg/aFCQSyzNU8)`)
         .addFields(categories)
         .setFooter(
           `Requested by ${message.author.tag}`,
@@ -123,7 +123,7 @@ module.exports = {
             } Commands!__`
           )
           .setDescription(
-            `Use \`${gPrefix}help\` followed by a command name to get more information on a command.\nFor example: \`${gPrefix}help ping\`\n\n`
+            `Use \`${prefix}help\` followed by a command name to get more information on a command.\nFor example: \`${prefix}help ping\`\n\n`
           )
           .addFields(catts)
           .setColor(color);
@@ -134,7 +134,7 @@ module.exports = {
       if (!command) {
         const embed = new MessageEmbed()
           .setTitle(
-            `Invalid command! Use \`${gPrefix}help\` for all of my commands!`
+            `Invalid command! Use \`${prefix}help\` for all of my commands!`
           )
           .setColor("RED");
         return message.channel.send({ embeds: [embed] });
@@ -155,8 +155,8 @@ module.exports = {
         .addField(
           "Usage:",
           command.usage
-            ? `\`${gPrefix}${command.name} ${command.usage}\``
-            : `\`${gPrefix}${command.name}\``
+            ? `\`${prefix}${command.name} ${command.usage}\``
+            : `\`${prefix}${command.name}\``
         )
         .addField(
           "Command Description:",
