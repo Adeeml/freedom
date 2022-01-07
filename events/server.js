@@ -6,12 +6,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Route to Homepage
 app.get('/', (req, res) => {
-  res.sendFile('./static/index.html');
+  res.sendFile('~/static/index.html');
 });
 
 // Route to Login Page
 app.get('/login', (req, res) => {
-  res.sendFile('./static/login.html');
+  res.sendFile('~/static/login.html');
 });
 
 app.post('/login', (req, res) => {
