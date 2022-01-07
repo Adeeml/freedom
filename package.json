@@ -37,8 +37,7 @@
     "twemoji-parser": "^13.1.0",
     "winston": "^3.3.3",
     "@keyv/mongo": "latest",
-    "keyv": "latest",
-    "body-parser": "latest"
+    "keyv": "latest"
   },
   "devDependencies": {
     "node": "^16.10.0"
