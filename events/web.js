@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 const express = require('express');
 const { clientId } = require('../configs/config.json');
-const { port } = require(process.env.PORT);
+const port = (process.env.PORT);
 
 const app = express();
 
