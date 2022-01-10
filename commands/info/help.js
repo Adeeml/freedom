@@ -52,12 +52,7 @@ module.exports = {
         .setTitle(`\`\`Help Menu\`\``)
         .setDescription(`\`\`My Prefix is : ${prefix} \`\`\n To check out a category, use command ${prefix}help [category] \n\n [Invite Me Now](https://discord.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=bot%20applications.commands) \n [My Support Server](https://discord.gg/aFCQSyzNU8)`)
         .addFields(categories)
-        .setFooter(
-          `Requested by ${message.author.tag}`,
-          message.author.displayAvatarURL({
-            dynamic: true,
-          })
-        )
+        .setFooter(`Requested by ${message.author.tag}`)
         .setTimestamp()
         .setThumbnail(
           client.user.displayAvatarURL({
@@ -164,12 +159,7 @@ module.exports = {
             ? command.description
             : "No description for this command."
         )
-        .setFooter(
-          `Requested by ${message.author.tag}`,
-          message.author.displayAvatarURL({
-            dynamic: true,
-          })
-        )
+        .setFooter(`Requested by ${message.author.tag}`)
         .setTimestamp()
         .setColor(color);
       return message.channel.send({ embeds: [embed] });
