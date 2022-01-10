@@ -1,6 +1,7 @@
 const fetch = require('node-fetch');
 const express = require('express');
 const { clientId } = require('../configs/config.json');
+const { port } = require(process.env.PORT);
 
 const app = express();
 
@@ -16,7 +17,7 @@ app.get('/', async ({ query }, response) => {
 					client_secret: process.env.clientSecret,
 					code,
 					grant_type: 'authorization_code',
-					redirect_uri: `http://localhost:${process.env.PORT}`,
+					redirect_uri: `http://localhost:${port}`,
 					scope: 'identify',
 				}),
 				headers: {
@@ -43,4 +44,4 @@ app.get('/', async ({ query }, response) => {
 	return response.sendFile('index.html', { root: '.' });
 });
 
-app.listen(port, () => console.log(`App listening at http://localhost:${process.env.PORT}`));
+app.listen(port, () => console.log(`App listening at http://localhost:${port}`));
