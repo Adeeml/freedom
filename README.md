@@ -1,6 +1,3 @@
-# NEW LINK BELOW
-https://www.github.com/WebManageBotOFFICIAL/WebManageBot
-
 # THIS IS WEBMANAGEBOT
 ## An easy to use, multi-purpose, and resource-hog free website for optimal performance on low-end desktops AND mobile!
 
