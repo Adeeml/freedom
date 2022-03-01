@@ -67,7 +67,7 @@ client.categories = fs.readdirSync('./commands/');
 	require(`./handlers/${handler}`)(client);
 });
 
-client.login(process.env.TOKEN);
+client.login(config.token);
 
 process.on("unhandledRejection", (reason, p) => {
 	console.log(reason, p)
