@@ -1,7 +1,7 @@
 const Keyv = require('keyv');
 const { Client, Intents } = require('discord.js');
 const config = require('./configs/config.json');
-const globalPrefix = config.globalPrefix;
+const defaultPrefix = config.defaultPrefix;
 
 const client = new Client({
     intents: [
@@ -23,8 +23,8 @@ client.on('messageCreate', async message => {
 	if (message.guild) {
 		let prefix;
 
-		if (message.content.startsWith(globalPrefix)) {
-			prefix = globalPrefix;
+		if (message.content.startsWith(defaultPrefix)) {
+			prefix = defaultPrefix;
 		} else {
 			const guildPrefix = await prefixes.get(message.guild.id);
 			if (message.content.startsWith(guildPrefix)) prefix = guildPrefix;
@@ -33,7 +33,7 @@ client.on('messageCreate', async message => {
 		if (!prefix) return;
 		args = message.content.slice(prefix.length).trim().split(/\s+/);
 	} else {
-		const slice = message.content.startsWith(globalPrefix) ? globalPrefix.length : 0;
+		const slice = message.content.startsWith(defaultPrefix) ? defaultPrefix.length : 0;
 		args = message.content.slice(slice).split(/\s+/);
 	}
 
@@ -45,7 +45,7 @@ client.on('messageCreate', async message => {
 			return message.channel.send(`Successfully set prefix to \`${args[0]}\``);
 		}
 
-		return message.channel.send(`Prefix is \`${await prefixes.get(message.guild.id) || globalPrefix}\``);
+		return message.channel.send(`Prefix is \`${await prefixes.get(message.guild.id) || defaultPrefix}\``);
 	}
 });
 

@@ -3,12 +3,8 @@ const colors = require('colors');
 const fs = require('fs');
 const ee = require('./configs/embed.json');
 const winston = require('winston');
-const Keyv = require('keyv');
-const prefixes = new Keyv(`${process.env.MONGO_URL}`);
-//keyv.on('error', err => console.error('Keyv connection error:', err));
-prefixes.on('error', err => console.error('Keyv connection error', err));
 const config = require('./configs/config.json');
-const globalPrefix = config.globalPrefix;
+const defaultPrefix = config.defaultPrefix;
 
 const client = new Client({
 	messageCacheLifetime: 60,

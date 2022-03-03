@@ -1,7 +1,7 @@
 const Keyv = require('keyv');
 const prefixes = new Keyv(`${process.env.MONGO_URL}`);
 const config = require('../../configs/config.json');
-const globalPrefix = config.globalPrefix;
+const defaultPrefix = config.defaultPrefix;
 
 module.exports = {
     name: 'prefix',
@@ -13,5 +13,5 @@ run: async (client, message, args) => {
         return message.channel.send(`Successfully set prefix to \`${args[0]}\``);
     }
 
-    return message.channel.send(`Prefix is \`${await prefixes.get(message.guild.id) || globalPrefix}\``);
+    return message.channel.send(`Prefix is \`${await prefixes.get(message.guild.id) || defaultPrefix}\``);
 }}

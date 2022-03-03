@@ -2,7 +2,7 @@ const { MessageEmbed, Message, Client } = require("discord.js");
 const { readdirSync } = require("fs");
 let color = "#36393f";
 const config = require('../../configs/config.json');
-const prefix = config.globalPrefix;
+const prefix = config.defaultPrefix;
 const Keyv = require('keyv');
 const prefixes = new Keyv(`${process.env.MONGO_URL}`);
 

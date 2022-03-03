@@ -4,7 +4,7 @@ const prefixes = new Keyv(`${process.env.MONGO_URL}`);
 const client = require("..");
 //var ee = require("../configs/embed.json");
 const config = require('../configs/config.json');
-const globalPrefix = config.globalPrefix;
+const defaultPrefix = config.defaultPrefix;
 
 client.on('messageCreate', async (message) => {
 	//const { escapeRegex, onCoolDown } = require("../utils/function.js");
@@ -19,8 +19,8 @@ client.on('messageCreate', async (message) => {
 	if (message.guild) {
 		let prefix;
 
-		if (message.content.startsWith(globalPrefix)) {
-			prefix = globalPrefix;
+		if (message.content.startsWith(defaultPrefix)) {
+			prefix = defaultPrefix;
 		} else {
 			// check the guild-level prefix
 			const guildPrefix = await prefixes.get(message.guild.id);
@@ -32,7 +32,7 @@ client.on('messageCreate', async (message) => {
 		args = message.content.slice(prefix.length).trim().split(/\s+/);
 	} else {
 // Handle DMs
-		const slice = message.content.startsWith(globalPrefix) ? globalPrefix.length : 0;
+		const slice = message.content.startsWith(defaultPrefix) ? defaultPrefix.length : 0;
 		args = message.content.slice(slice).split(/\s+/);
 	}
 
