@@ -1,3 +1,4 @@
+require('dotenv').config()
 const { Client, Message, MessageEmbed, Collection } = require('discord.js');
 const colors = require('colors');
 const fs = require('fs');
