@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const { Client, Message, MessageEmbed, Collection, Intents } = require("discord.js");
 const config = require('../../configs/config.json');
 const assets = require('../../configs/assets.json');
-const embeds = require('../../configs/embeds.json');
+const embeds = require('../../configs/embed.json');
 require('dotenv').config();
 
 module.exports = {

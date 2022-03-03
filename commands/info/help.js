@@ -3,15 +3,12 @@ const { readdirSync } = require("fs");
 let color = "#36393f";
 const config = require('../../configs/config.json');
 const prefix = config.defaultPrefix;
-const Keyv = require('keyv');
-const prefixes = new Keyv(`${process.env.MONGO_URL}`);
 
 module.exports = {
   name: "help",
   aliases: "h",
   description: "Shows all available commands",
   run: async (client, message, args) => {
-    //const gPrefix = await prefixes.get(message.guild.id);
     if (!args[0]) {
       let categories = [];
 
@@ -23,7 +20,7 @@ module.exports = {
 				mod: "👁",
         server: "📝",
 				games: "🎲",
-				test: "🖼️"
+				test: "🖼️",
       };
 
       const catinfo = {
@@ -32,7 +29,7 @@ module.exports = {
 				mod: "Punish those baddies from existence",
         server: "Manage the server",
 				games: "Gaymerland",
-				test: "Testing commands"
+				test: "Testing commands",
       };
 
       readdirSync("./commands/").forEach((dir) => {
@@ -57,7 +54,7 @@ module.exports = {
         .setThumbnail(
           client.user.displayAvatarURL({
             dynamic: true,
-          })
+          }),
         )
         .setColor(color);
 
@@ -69,7 +66,7 @@ module.exports = {
       readdirSync("./commands/").forEach((dir) => {
         if (dir.toLowerCase() !== args[0].toLowerCase()) return;
         const commands = readdirSync(`./commands/${dir}/`).filter((file) =>
-          file.endsWith(".js")
+          file.endsWith(".js"),
         );
 
         const cmds = commands.map((command) => {
@@ -107,7 +104,7 @@ module.exports = {
       const command =
         client.commands.get(args[0].toLowerCase()) ||
         client.commands.find(
-          (c) => c.aliases && c.aliases.includes(args[0].toLowerCase())
+          (c) => c.aliases && c.aliases.includes(args[0].toLowerCase()),
         );
 
       if (cots.includes(args[0].toLowerCase())) {
@@ -115,10 +112,10 @@ module.exports = {
           .setTitle(
             `__${
               args[0].charAt(0).toUpperCase() + args[0].slice(1)
-            } Commands!__`
+            } Commands!__`,
           )
           .setDescription(
-            `Use \`${prefix}help\` followed by a command name to get more information on a command.\nFor example: \`${prefix}help ping\`\n\n`
+            `Use \`${prefix}help\` followed by a command name to get more information on a command.\nFor example: \`${prefix}help ping\`\n\n`,
           )
           .addFields(catts)
           .setColor(color);
@@ -129,7 +126,7 @@ module.exports = {
       if (!command) {
         const embed = new MessageEmbed()
           .setTitle(
-            `Invalid command! Use \`${prefix}help\` for all of my commands!`
+            `Invalid command! Use \`${prefix}help\` for all of my commands!`,
           )
           .setColor("RED");
         return message.channel.send({ embeds: [embed] });
@@ -139,25 +136,25 @@ module.exports = {
         .setTitle("Command Details:")
         .addField(
           "Command:",
-          command.name ? `\`${command.name}\`` : "No name for this command."
+          command.name ? `\`${command.name}\`` : "No name for this command.",
         )
         .addField(
           "Aliases:",
           command.aliases
             ? `\`${command.aliases.join("` `")}\``
-            : "No aliases for this command."
+            : "No aliases for this command.",
         )
         .addField(
           "Usage:",
           command.usage
             ? `\`${prefix}${command.name} ${command.usage}\``
-            : `\`${prefix}${command.name}\``
+            : `\`${prefix}${command.name}\``,
         )
         .addField(
           "Command Description:",
           command.description
             ? command.description
-            : "No description for this command."
+            : "No description for this command.",
         )
         .setFooter(`Requested by ${message.author.tag}`)
         .setTimestamp()
