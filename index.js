@@ -1,5 +1,3 @@
-require('dotenv').config()
-console.log(process.env)
 const { Client, Message, MessageEmbed, Collection } = require('discord.js');
 const colors = require('colors');
 const fs = require('fs');
@@ -39,12 +37,12 @@ const logger = winston.createLogger({
 	],
 	format: winston.format.printf(log => `[${log.level.toUpperCase()}] - ${log.message}`),
 });
-/*
+
 const Errorhandler = require('discord-error-handler');
 const handle = new Errorhandler(client, {
 	webhook: { id: process.env.webhook_id, token: process.env.webhook_token },
 });
-*/
+
 client.on('debug', m => logger.log('debug', m));
 client.on('warn', m => logger.log('warn', m));
 client.on('error', m => logger.log('error', m));
@@ -69,13 +67,13 @@ client.login(process.env.token);
 
 process.on("unhandledRejection", (reason, p) => {
 	console.log(reason, p)
-	//handle.createrr(client, undefined, undefined, reason, p)
+	handle.createrr(client, undefined, undefined, reason, p)
 })
 process.on("uncaughtException", (err, origin) => {
 	console.log(err, origin)
-	//handle.createrr(client, undefined, undefined, err, origin)
+	handle.createrr(client, undefined, undefined, err, origin)
 })
 process.on("multipleResolves", (type, promise, reason) => {
 	console.log(type, promise, reason)
-	//handle.createrr(client, undefined, undefined, type, promise, reason)
+	handle.createrr(client, undefined, undefined, type, promise, reason)
 })
