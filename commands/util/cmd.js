@@ -13,11 +13,7 @@ module.exports = {
 		const command = args.join(" ");
 		if(!command) return message.reply('There were no commands given!');
 		child.exec(command, (err, res) => {
-			if(err) return 
-			{
-				console.log(err)
-				message.reply(err)
-			}
+			if(err) return console.log(err), message.reply(err);
 			message.channel.send(res.slice(0, 2000), { code: 'js'});
 		});
 	},
